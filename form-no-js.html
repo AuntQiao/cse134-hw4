@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 1rem 1rem 1rem 1rem;
+      padding: 0;
+      width: 95%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1{
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    output.error {
+      color: #cd7369;
+      font-size: 0.9rem;
+      min-height: 1em;
+      display: block;
+    }
+
+    output.info {
+      color: #2980b9;
+      font-size: 0.9rem;
+      min-height: 1em;
+      display: block;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.9rem;
+      background: #6d768d;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #abbe8e;
+    }
+    /* The following CSS rule ensures consistent box-sizing across all elements */
+    * {
+        box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+    
+    <h1>Contact Form</h1>
+
+    <form method="POST" action="https://httpbin.org/post">
+
+      <input type="hidden" name="possible_bot" value="true" />
+
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required />
+      <output class="error" for="name"></output>
+      <output class="info" for="name"></output>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+      <output class="error" for="email"></output>
+      <output class="info" for="email"></output>
+
+      <label for="phone">Phone Number</label>
+      <input id="phone" name="phone" type="tel" />
+      <output class="error" for="phone"></output>
+      <output class="info" for="phone"></output>
+
+      <label for="comments">Comments</label>
+      <textarea id="comments" name="comments" required placeholder="Write your message here..."></textarea>
+      <output class="error" for="comments"></output>
+      <output class="info" for="comments"></output>
+
+      <label for="contact-method">Want to get the newest updates by?</label>
+      <select id="contact-method" name="contact_method">
+        <option value="email">Email</option>
+        <option value="phone">Phone</option>
+      </select>
+      <output class="error" for="contact-method"></output>
+      <output class="info" for="contact-method"></output>
+
+      <button type="submit">Save</button>
+    </form>
+  
+ </body>
+</html>
