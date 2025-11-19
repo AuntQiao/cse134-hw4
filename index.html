@@ -47,10 +47,18 @@
           <source srcset="images/Stanford-52.png" media="(min-width: 601px)">
           <img src="images/Stanford-52.png" alt="Placeholder" width="150">
         </picture>
-        <div class="text-box">
+        <div class="text-box"></div>
+          <p id="about-text">
+            <strong>Nicole Liu</strong> – a student who 
+            <span style="color:red;">loves</span> creative projects.
+          </p>
+          <button id="view-details" class="button">View Details</button>
+        </div>
+        <!-- <div class="text-box">
           <p><strong>Nicole Liu</strong> – a student who <span style="color:red;">loves</span> creative projects.</p>
           <a href="aboutMe.html" class="button">View Details</a>
-        </div>
+
+        </div -->
       </me-card>
     </section>
 
@@ -90,7 +98,50 @@
 
     document.createElement("me-card");
     document.createElement("project-card");
+
+    //View Details with View Transition API
+
+  //   document.querySelector("#view-details").addEventListener("click", () => {
+  //   const about = document.querySelector("#about-text");
+
+  //   document.startViewTransition(() => {
+  //     about.innerHTML = `
+  //       <strong>Nicole Liu</strong> – a passionate computer science student at UC San Diego. 
+  //       I enjoy building interactive interfaces, solving real-world problems, and using 
+  //       technology to shape innovative user experiences.
+  //     `;
+  //   });
+  // });
+  const shortText = `
+    <strong>Nicole Liu</strong> – a student who 
+    <span style="color:red;">loves</span> creative projects.
+  `;
+
+  const longText = `
+    <strong>Nicole Liu</strong> – a passionate computer science student at UC San Diego. 
+    I enjoy building interactive interfaces, solving real-world problems, and using technology to shape innovative user experiences.
+  `;
+
+  let restoreTimer = null;
+
+  document.querySelector("#view-details").addEventListener("click", () => {
+    const about = document.querySelector("#about-text");
+
+    document.startViewTransition(() => {
+      about.innerHTML = longText;
+    });
+
+    if (restoreTimer) clearTimeout(restoreTimer);
+
+    restoreTimer = setTimeout(() => {
+      document.startViewTransition(() => {
+        about.innerHTML = shortText;
+      });
+    }, 9000); 
+  });
+
   </script>
   <script src="theme.js" defer></script>
 </body>
 </html>
+>
